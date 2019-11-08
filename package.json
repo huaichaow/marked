@@ -1,5 +1,5 @@
 {
-  "name": "marked",
+  "name": "markedjs",
   "description": "A markdown parser built for speed",
   "author": "Christopher Jeffrey",
   "version": "0.7.0",
