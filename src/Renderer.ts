@@ -24,24 +24,24 @@ export class _Renderer {
   code({ text, lang, escaped }: Tokens.Code): string {
     const langString = (lang || '').match(/^\S*/)?.[0];
 
-    const code = text.replace(/\n$/, '') + '\n';
+    const code = text.replace(/\n+$/, '');
 
     if (!langString) {
       return '<pre><code>'
         + (escaped ? code : escape(code, true))
-        + '</code></pre>\n';
+        + '</code></pre>';
     }
 
     return '<pre><code class="language-'
       + escape(langString)
       + '">'
       + (escaped ? code : escape(code, true))
-      + '</code></pre>\n';
+      + '</code></pre>';
   }
 
   blockquote({ tokens }: Tokens.Blockquote): string {
     const body = this.parser.parse(tokens);
-    return `<blockquote>\n${body}</blockquote>\n`;
+    return `<blockquote>${body}</blockquote>`;
   }
 
   html({ text }: Tokens.HTML | Tokens.Tag) : string {
@@ -49,11 +49,11 @@ export class _Renderer {
   }
 
   heading({ tokens, depth }: Tokens.Heading): string {
-    return `<h${depth}>${this.parser.parseInline(tokens)}</h${depth}>\n`;
+    return `<h${depth}>${this.parser.parseInline(tokens)}</h${depth}>`;
   }
 
   hr(token: Tokens.Hr): string {
-    return '<hr>\n';
+    return '<hr>';
   }
 
   list(token: Tokens.List): string {
@@ -68,7 +68,7 @@ export class _Renderer {
 
     const type = ordered ? 'ol' : 'ul';
     const startAttr = (ordered && start !== 1) ? (' start="' + start + '"') : '';
-    return '<' + type + startAttr + '>\n' + body + '</' + type + '>\n';
+    return '<' + type + startAttr + '>' + body + '</' + type + '>';
   }
 
   listitem(item: Tokens.ListItem): string {
@@ -95,7 +95,7 @@ export class _Renderer {
 
     itemBody += this.parser.parse(item.tokens, !!item.loose);
 
-    return `<li>${itemBody}</li>\n`;
+    return `<li>${itemBody}</li>`;
   }
 
   checkbox({ checked }: Tokens.Checkbox): string {
@@ -105,7 +105,7 @@ export class _Renderer {
   }
 
   paragraph({ tokens }: Tokens.Paragraph): string {
-    return `<p>${this.parser.parseInline(tokens)}</p>\n`;
+    return `<p>${this.parser.parseInline(tokens)}</p>`;
   }
 
   table(token: Tokens.Table): string {
@@ -131,16 +131,16 @@ export class _Renderer {
     }
     if (body) body = `<tbody>${body}</tbody>`;
 
-    return '<table>\n'
-      + '<thead>\n'
+    return '<table>'
+      + '<thead>'
       + header
-      + '</thead>\n'
+      + '</thead>'
       + body
-      + '</table>\n';
+      + '</table>';
   }
 
   tablerow({ text }: Tokens.TableRow): string {
-    return `<tr>\n${text}</tr>\n`;
+    return `<tr>${text}</tr>`;
   }
 
   tablecell(token: Tokens.TableCell): string {
@@ -149,7 +149,7 @@ export class _Renderer {
     const tag = token.align
       ? `<${type} align="${token.align}">`
       : `<${type}>`;
-    return tag + content + `</${type}>\n`;
+    return tag + content + `</${type}>`;
   }
 
   /**
