@@ -1,5 +1,5 @@
 {
-  "name": "marked",
+  "name": "@huaichao.wang/marked",
   "description": "A markdown parser built for speed",
   "author": "Christopher Jeffrey",
   "version": "14.1.3",
