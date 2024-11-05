@@ -1,5 +1,5 @@
 {
-  "name": "marked",
+  "name": "@huaichao.wang/marked",
   "description": "A markdown parser built for speed",
   "author": "Christopher Jeffrey",
   "version": "1000.0.0",
@@ -36,10 +36,10 @@
   "publishConfig": {
     "provenance": true
   },
-  "repository": "git://github.com/markedjs/marked.git",
-  "homepage": "https://marked.js.org",
+  "repository": "git@github.com:huaichaow/marked.git",
+  "homepage": "https://www.huaichao.wang",
   "bugs": {
-    "url": "http://github.com/markedjs/marked/issues"
+    "url": "http://github.com/huaichaow/marked/issues"
   },
   "license": "MIT",
   "keywords": [
