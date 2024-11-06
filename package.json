@@ -2,7 +2,7 @@
   "name": "@huaichao.wang/marked",
   "description": "A markdown parser built for speed",
   "author": "Christopher Jeffrey",
-  "version": "1000.0.0",
+  "version": "14.2.0",
   "type": "module",
   "main": "./lib/marked.cjs",
   "module": "./lib/marked.esm.js",
